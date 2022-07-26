@@ -1,0 +1,17 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "..",
+  "roots": [
+    "<rootDir>/test"
+  ],
+  "testEnvironment": "node",
+  "testRegex": ".*\\.ispec\\.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "@SecretSanta/(.*)": "<rootDir>/src/SecretSanta/$1",
+    "@shared/(.*)": "<rootDir>/src/shared/$1",
+    "@models/(.*)": "<rootDir>/src/models/$1"
+  }
+}
