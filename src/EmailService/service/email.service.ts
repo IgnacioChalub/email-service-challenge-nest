@@ -1,5 +1,5 @@
 import { IDailyEmailsRepository, IEmailProvider, IUserRepository } from "@EmailService/repository";
-import { SendEmailDto } from "@models/DailyEmails/dto";
+import { GetStatsDto, SendEmailDto } from "@models/DailyEmails/dto";
 import { DailyEmails } from "@models/DailyEmails/entities";
 import { Inject, Injectable } from "@nestjs/common";
 import { EmailCouldNotBeSentError } from "@shared/errors";
@@ -27,6 +27,10 @@ export class EmailService implements IEmailService {
         if(!sent) throw new EmailCouldNotBeSentError();
         
         return await this.dailyEmailsRepository.addDailyEmailSent(dailyEmails.id);
+    }
+
+    async getStats(getStatsDto: GetStatsDto): Promise<DailyEmails[]> {
+        return await this.dailyEmailsRepository.getStats(getStatsDto.date);
     }
 
 }

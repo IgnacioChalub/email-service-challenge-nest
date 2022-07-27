@@ -37,4 +37,15 @@ export class DailyEmailsRepository
             }
         })
     }
+
+    async getStats(date: Date): Promise<DailyEmails[]> {
+        return await this.findMany({
+            where: {
+                date: date
+            },
+            include: {
+                user: true
+            }
+        })
+    }
 }
