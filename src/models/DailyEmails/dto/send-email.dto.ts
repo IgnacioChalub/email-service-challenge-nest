@@ -1,5 +1,6 @@
 import { IsDate, IsEmail, IsNotEmpty } from "class-validator";
-import { Type } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
+import { toDateWithoutHours } from "./date.parser";
 
 export class SendEmailDto {
 
@@ -14,7 +15,9 @@ export class SendEmailDto {
     text: string;
 
     @IsNotEmpty()
-    @Type(() => Date)
+    @Transform(toDateWithoutHours,  {toClassOnly: true})
     @IsDate()
     date: Date;
+
 } 
+
