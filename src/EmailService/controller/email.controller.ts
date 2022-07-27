@@ -14,7 +14,9 @@ export class EmailController {
 
     @UseGuards(JwtAuthGuard)
     @Post()
-    async sendEmail(@Request() req: any, @Body() sendEmailDto: SendEmailDto): Promise<DailyEmails> {
+    async sendEmail(@Request() req: any,@Body() sendEmailDto: SendEmailDto): Promise<DailyEmails> {
         return await this.emailService.sendEmail(req.user.userId, sendEmailDto);
     }
+
+
 }
