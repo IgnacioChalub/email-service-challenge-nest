@@ -22,7 +22,7 @@ export class UserRepository
         })
     }
 
-    async findWithutPassword(id: string): Promise<User> {
+    async findWithoutPassword(id: string): Promise<User> {
         return await this.findOne({
             where: {
                 id: id

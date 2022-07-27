@@ -32,6 +32,6 @@ export class UserService implements IUserService {
     }
 
     async getUser(id: string): Promise<User> {
-        return await this.userRepository.findWithutPassword(id);
+        return await this.userRepository.findWithoutPassword(id);
     }
 }

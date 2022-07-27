@@ -1,2 +1,6 @@
 export * from './user.repository.interface'
 export * from './user.repository'
+export * from './dailyEmails.repository.interface'
+export * from './dailyEmails.repository'
+export* from './emailProvider.interface'
+export * from './mailgun.emailProvider'

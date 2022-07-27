@@ -1,8 +1,8 @@
 import { SharedModule } from "@shared/shared.module";
 import { Module } from "@nestjs/common";
-import { UserController } from "./controller";
-import { IUserService, UserService } from "./service";
-import { IUserRepository, UserRepository } from "./repository";
+import { EmailController, UserController } from "./controller";
+import { EmailService, IEmailService, IUserService, UserService } from "./service";
+import { DailyEmailsRepository, IDailyEmailsRepository, IEmailProvider, IUserRepository, MailgunEmailProvider, UserRepository } from "./repository";
 import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
 import { JwtStrategy } from "./auth/jwt.strategy";
@@ -17,6 +17,21 @@ const userRepositoryProvider = {
   useClass: UserRepository
 }
 
+const emailServiceProvider = {
+  provide: IEmailService,
+  useClass: EmailService
+}
+
+const dailyEmailsRepositoryProvider = {
+  provide: IDailyEmailsRepository,
+  useClass: DailyEmailsRepository
+}
+
+const emailProviderProvider = {
+  provide: IEmailProvider,
+  useClass: MailgunEmailProvider
+}
+
 @Module({
   imports: [
     SharedModule,
@@ -26,11 +41,14 @@ const userRepositoryProvider = {
       signOptions: {expiresIn: '3600s'}
     })
   ],
-  controllers: [UserController],
+  controllers: [UserController, EmailController],
   providers: [
     JwtStrategy,
     userServiceProvider,
     userRepositoryProvider,
+    emailServiceProvider,
+    dailyEmailsRepositoryProvider,
+    emailProviderProvider
   ],
 })
 export class EmailServiceModule {}

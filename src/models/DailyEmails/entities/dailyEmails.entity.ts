@@ -4,5 +4,5 @@ export class DailyEmails {
     id: string
     date: Date
     amount: number
-    user: User
+    user?: User
 }
