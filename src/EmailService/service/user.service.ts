@@ -25,7 +25,7 @@ export class UserService implements IUserService {
     async loginUser(loginUserDto: LoginUserDto): Promise<Token> {
         const user = await this.userRepository.findByUsername(loginUserDto.username);
         if(!user || user.password != loginUserDto.password) throw new NotFoundError("user");
-        const token = this.jwtService.sign({username: user.username, sub: user.id})
+        const token = this.jwtService.sign({username: user.username, sub: user.id, isAdmin: user.isAdmin})
         return {
             "token": token
         }
