@@ -1,5 +1,5 @@
 import { IsDate, IsEmail, IsNotEmpty } from "class-validator";
-import { Transform, Type } from 'class-transformer';
+import { Transform } from 'class-transformer';
 import { toDateWithoutHours } from "./date.parser";
 
 export class SendEmailDto {

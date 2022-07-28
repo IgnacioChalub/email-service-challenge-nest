@@ -13,7 +13,7 @@
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "moduleNameMapper": {
-    "@SecretSanta/(.*)": "<rootDir>/src/EmailService/$1",
+    "@EmailService/(.*)": "<rootDir>/src/EmailService/$1",
     "@shared/(.*)": "<rootDir>/src/shared/$1",
     "@models/(.*)": "<rootDir>/src/models/$1"
   },
