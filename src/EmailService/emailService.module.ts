@@ -2,7 +2,7 @@ import { SharedModule } from "@shared/shared.module";
 import { Module } from "@nestjs/common";
 import { EmailController, UserController } from "./controller";
 import { EmailService, IEmailService, IUserService, UserService } from "./service";
-import { DailyEmailsRepository, IDailyEmailsRepository, IEmailProvider, IUserRepository, MailgunEmailProvider, UserRepository } from "./repository";
+import { DailyEmailsRepository, IDailyEmailsRepository, IEmailProvider, IUserRepository, MailgunEmailProvider, NodemailerEmailProvider, UserRepository } from "./repository";
 import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
 import { JwtStrategy } from "./auth/jwt.strategy";
@@ -27,9 +27,14 @@ const dailyEmailsRepositoryProvider = {
   useClass: DailyEmailsRepository
 }
 
-const emailProviderProvider = {
+const mailgunProvider = {
   provide: IEmailProvider,
   useClass: MailgunEmailProvider
+}
+
+const nodemailerProvider = {
+  provide: IEmailProvider,
+  useClass: NodemailerEmailProvider
 }
 
 @Module({
@@ -48,7 +53,7 @@ const emailProviderProvider = {
     userRepositoryProvider,
     emailServiceProvider,
     dailyEmailsRepositoryProvider,
-    emailProviderProvider
+    nodemailerProvider
   ],
 })
 export class EmailServiceModule {}
