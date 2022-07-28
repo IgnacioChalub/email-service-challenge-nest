@@ -44,7 +44,14 @@ export class DailyEmailsRepository
                 date: date
             },
             include: {
-                user: true
+                user: {
+                    select: {
+                        id: true,
+                        username: true,
+                        email: true,
+                        isAdmin: true
+                    }
+                }
             }
         })
     }
