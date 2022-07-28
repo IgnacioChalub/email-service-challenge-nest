@@ -1,5 +1,5 @@
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
-import { InvalidModelError, NotFoundError } from "@shared/errors";
+import { InvalidModelError, NotFoundError, ResourceAlreadyExists } from "@shared/errors";
 import { IBaseRepository } from "@shared/repository";
 import { DatabaseService, Models } from "@shared/service";
 
@@ -15,7 +15,15 @@ export class BaseRepository<T extends { id: any }>
   }
 
   async create(data: any): Promise<T> {
-    return this.db[this.model].create({ data });
+    let object = undefined;
+    try {
+      object = await this.db[this.model].create({ data });
+    } catch (e: any) {
+      if (e instanceof PrismaClientKnownRequestError)
+        throw new ResourceAlreadyExists("Invalid credentials");
+      throw e;
+    }
+    return object;
   }
 
   async createMany(data: any): Promise<T[]> {

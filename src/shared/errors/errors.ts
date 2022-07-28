@@ -35,3 +35,9 @@ export class EmailCouldNotBeSentError extends ApiError {
     super(HttpStatus.INTERNAL_SERVER_ERROR, `Email could not be sent`);
   }
 }
+
+export class ResourceAlreadyExists extends ApiError {
+  constructor(message: string) {
+    super(HttpStatus.NOT_ACCEPTABLE, message);
+  }
+}
