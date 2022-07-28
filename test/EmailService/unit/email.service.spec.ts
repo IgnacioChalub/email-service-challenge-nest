@@ -1,4 +1,4 @@
-import { IUserRepository, IDailyEmailsRepository, IEmailProvider, UserRepository, DailyEmailsRepository, NodemailerEmailProvider } from '@EmailService/repository';
+import { IUserRepository, IDailyEmailsRepository, IEmailProvider, UserRepository, DailyEmailsRepository, NodemailerEmailProvider, MailgunEmailProvider } from '@EmailService/repository';
 import { EmailService, IEmailService } from '@EmailService/service';
 import { Test, TestingModule } from '@nestjs/testing';
 import { SharedModule } from '@shared/shared.module';
@@ -27,7 +27,7 @@ describe('EmailService Unit Test', () => {
   
       const emailProviderProvider = {
           provide: IEmailProvider,
-          useClass: NodemailerEmailProvider
+          useClass: MailgunEmailProvider
       }
   
       const app: TestingModule = await Test.createTestingModule({

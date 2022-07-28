@@ -1,6 +1,6 @@
 import { JwtStrategy } from '@EmailService/auth/jwt.strategy';
 import { EmailController, UserController } from '@EmailService/controller';
-import { IUserRepository, UserRepository, IDailyEmailsRepository, DailyEmailsRepository, IEmailProvider, NodemailerEmailProvider } from '@EmailService/repository';
+import { IUserRepository, UserRepository, IDailyEmailsRepository, DailyEmailsRepository, IEmailProvider, NodemailerEmailProvider, MailgunEmailProvider } from '@EmailService/repository';
 import { IEmailService, EmailService, IUserService, UserService } from '@EmailService/service';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
@@ -28,7 +28,7 @@ const dailyEmailsRepositoryProvider = {
 }
 const emailProviderProvider = {
     provide: IEmailProvider,
-    useClass: NodemailerEmailProvider
+    useClass: MailgunEmailProvider
 }
 
 @Module({
