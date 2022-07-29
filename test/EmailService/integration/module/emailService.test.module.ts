@@ -6,6 +6,7 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { SharedTestModule } from '../../../shared.test.module';
+import { MockEmailProvider } from '../mocks/emailProvider.mock';
 
 const userServiceProvider = {
     provide: IUserService,
@@ -28,7 +29,7 @@ const dailyEmailsRepositoryProvider = {
 }
 const emailProviderProvider = {
     provide: IEmailProvider,
-    useClass: MailgunEmailProvider
+    useClass: MockEmailProvider
 }
 
 @Module({
