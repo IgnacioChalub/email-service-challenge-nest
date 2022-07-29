@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/41c4e05f-cb21-43c7-bab3-9f780b0466ec/microsoft.web/sites/subscriptions/41c4e05f-cb21-43c7-bab3-9f780b0466ec/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/email-service-api-nest",
+    "appService.deploySubpath": "."
+}
