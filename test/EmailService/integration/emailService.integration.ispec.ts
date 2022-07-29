@@ -124,5 +124,6 @@ describe('Email service module', () => {
         expect(output.body[0].user.username).toBe(user.username);
         expect(output.body[0].user.email).toBe(user.email);
         expect(output.body[0].user.isAdmin).toBe(user.isAdmin);
+        
     });
 });
