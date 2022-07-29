@@ -12,7 +12,7 @@ services:
       - database:/var/lib/postgresql/data
   api:
     container_name: email-api
-    image: email-service-api
+    image: ignaciochalub/email-service-nestjs
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@database:5432/email-service-challenge-nest
     ports:
