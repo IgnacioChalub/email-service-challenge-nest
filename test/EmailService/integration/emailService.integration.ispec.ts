@@ -64,7 +64,6 @@ describe('Email service module', () => {
         expect(output.body.username).toBe(user.username);
         expect(output.body.email).toBe(user.email);
         expect(output.body.isAdmin).toBe(user.isAdmin);
-
     });
 
     const emailInfo = {
