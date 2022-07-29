@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env: 
-  EMAIL: ${{secrets.DATABASE_URL}}
+  DATABASE_URL: ${{secrets.DATABASE_URL}}
 
 jobs:
   build:
